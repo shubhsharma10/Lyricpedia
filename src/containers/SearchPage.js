@@ -1,12 +1,14 @@
 import React from 'react'
 import TrackSearch from '../services/TrackSearch'
+import {Redirect} from 'react-router-dom'
 
 
-export default class SearchPage extends React.Component {
+class SearchPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            inputWords: ''
+            inputWords: '',
+            toResultPage: false
         };
         this.searchForTrack = this.searchForTrack.bind(this);
         this.inputChanged = this.inputChanged.bind(this);
@@ -17,13 +19,7 @@ export default class SearchPage extends React.Component {
 
 
     searchForTrack(){
-        console.log('came here');
-        this.trackSearchService
-            .searchTracks('you do')
-            .then((result)=>{
-            console.log(result.message.body);
-            })
-
+        this.setState({toResultPage:true});
     }
 
     inputChanged(event) {
@@ -32,22 +28,26 @@ export default class SearchPage extends React.Component {
 
 
     render() {
+        if(this.state.toResultPage === true) {
+            return <Redirect to={{
+                pathname: '/result',
+                inputWords: this.state.inputWords
+            }}/>
+        }
         return(
-            <div className="bg">
-                <div className="container">
-                    <div className="row vertical-center">
-                        <div className="input-group mb-3 col">
-                            <input type="text"
-                                   value={this.state.inputWords}
-                                   onChange={this.inputChanged}
-                                   className="form-control"
-                                   placeholder="Enter lyrics here"
-                                   aria-label="Enter lyrics here"
-                                   aria-describedby="basic-addon2"/>
-                                <div className="input-group-append">
-                                    <button className="btn btn-primary" onClick={this.searchForTrack}>Search</button>
-                                </div>
-                        </div>
+            <div className="container-fluid">
+                <div className="row vertical-center">
+                    <div className="input-group mb-3 col">
+                        <input type="text"
+                               value={this.state.inputWords}
+                               onChange={this.inputChanged}
+                               className="form-control"
+                               placeholder="Enter lyrics here"
+                               aria-label="Enter lyrics here"
+                               aria-describedby="basic-addon2"/>
+                            <div className="input-group-append">
+                                <button className="btn btn-primary" onClick={this.searchForTrack}>Search</button>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -55,3 +55,5 @@ export default class SearchPage extends React.Component {
     }
 
 }
+
+export default SearchPage;

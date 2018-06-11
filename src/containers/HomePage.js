@@ -7,12 +7,12 @@ export default class HomePage extends Component {
     render() {
         return(
             <Router>
-                <div className="container-fluid">
+                <div className="bg">
                     <Route
                         exact path="/" component={SearchPage}>
                     </Route>
                     <Route
-                        path="/result" component={SearchResult}>
+                        exact path="/result" component={SearchResult}>
                     </Route>
                 </div>
             </Router>

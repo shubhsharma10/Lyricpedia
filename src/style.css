@@ -3,9 +3,9 @@ body, html {
     margin: 0;
 }
 
-
-.rootPage {
-    background-color: black;
+.container-custom {
+    min-height: 100%;
+    min-height: 100vh;
 }
 
 .vertical-center {
@@ -14,12 +14,6 @@ body, html {
 
     display: flex;
     align-items: center;
-}
-
-.custom-button{
-    background-color: white;
-    color: red;
-    border-width: 1px;
 }
 
 .bg {
