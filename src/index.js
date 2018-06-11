@@ -1,7 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import './style.css'
+import '../node_modules/bootstrap/dist/css/bootstrap.css'
+import HomePage from "./containers/HomePage";
 
 ReactDOM.render(
-    <h1>Hello World!!</h1>,
+    <HomePage/>,
     document.getElementById('root')
 );
