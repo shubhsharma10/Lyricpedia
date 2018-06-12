@@ -84,7 +84,6 @@ export default class SearchResult extends Component {
     enteredWaypoint() {
         if(!this.state.isLoading
             && this.state.inputWords !== '') {
-            console.log('came here');
             this.searchForTracks(this.state.inputWords);
         }
     }

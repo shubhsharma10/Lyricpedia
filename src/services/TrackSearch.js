@@ -1,3 +1,5 @@
+import * as constants from '../constants/index'
+
 let _singleton = Symbol();
 
 class TrackSearch {
@@ -18,7 +20,7 @@ class TrackSearch {
             format: 'jsonp',
             callback: 't',
             album_id: albumId,
-            apikey: '629bf02832ff5f4513c42b46453c2340'
+            apikey: constants.API_KEY
         };
 
         let esc = encodeURIComponent;
@@ -42,7 +44,7 @@ class TrackSearch {
             album_id: albumId,
             page: 1,
             page_size: 50,
-            apikey: '629bf02832ff5f4513c42b46453c2340'
+            apikey: constants.API_KEY
         };
 
         let esc = encodeURIComponent;
@@ -65,7 +67,7 @@ class TrackSearch {
             format: 'jsonp',
             callback: 't',
             artist_id: artistId,
-            apikey: '629bf02832ff5f4513c42b46453c2340'
+            apikey: constants.API_KEY
         };
 
         let esc = encodeURIComponent;
@@ -82,16 +84,16 @@ class TrackSearch {
             })
     }
 
-    searchAlbums(artistId) {
+    searchAlbums(artistId,pageCount) {
         let params = {
             format: 'jsonp',
             callback: 't',
             artist_id: artistId,
-            page_size:10,
-            page:1,
+            page_size:6,
+            page:pageCount,
             s_release_date: 'desc',
             g_album_name: 1,
-            apikey: '629bf02832ff5f4513c42b46453c2340'
+            apikey: constants.API_KEY
         };
 
         let esc = encodeURIComponent;
@@ -115,7 +117,7 @@ class TrackSearch {
             q_lyrics: word,
             page_size:20,
             page:pageNumber,
-            apikey: '629bf02832ff5f4513c42b46453c2340'
+            apikey: constants.API_KEY
         };
 
         let esc = encodeURIComponent;

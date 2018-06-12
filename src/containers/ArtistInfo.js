@@ -2,8 +2,9 @@ import React from 'react';
 import TrackSearch from '../services/TrackSearch'
 import PageHeader from '../components/PageHeader'
 import PageFooter from '../components/PageFooter'
-import {Redirect} from 'react-router-dom'
 import AlbumCard from "../components/AlbumCard";
+import {Redirect} from 'react-router-dom'
+import Waypoint from 'react-waypoint';
 
 class ArtistInfo extends React.Component {
 
@@ -13,10 +14,13 @@ class ArtistInfo extends React.Component {
             albums: [],
             artistId: 0,
             artistName: '',
+            isLoading: false,
+            pageCount: 1,
             redirectToHome: false
         };
 
         this.goToHome = this.goToHome.bind(this);
+        this.enteredWaypoint = this.enteredWaypoint.bind(this);
         this.renderAlbumCards = this.renderAlbumCards.bind(this);
 
         this.musicService = TrackSearch.instance;
@@ -31,10 +35,36 @@ class ArtistInfo extends React.Component {
                 this.setState({artistName:result.message.body.artist.artist_name});
             });
 
+        this.searchForAlbums(this.props.match.params.artistId);
+    }
+
+    searchForAlbums(artistId) {
+        this.setState({isLoading:true});
+        let currentPageCount = this.state.pageCount;
         this.musicService
-            .searchAlbums(this.props.match.params.artistId)
+            .searchAlbums(artistId,currentPageCount)
             .then((result)=>{
-                this.setState({albums: result.message.body.album_list})});
+                let currentItems = this.state.albums;
+                let newItems = result.message.body.album_list;
+                for(let i=0;i<newItems.length;i++)
+                {
+                    currentItems.push(newItems[i]);
+                }
+                this.setState({
+                    albums:currentItems},function () {
+                    this.setState({
+                        isLoading: false,
+                        pageCount: this.state.pageCount + 1
+                    });
+                })
+            });
+    }
+
+    enteredWaypoint() {
+        if(!this.state.isLoading
+            && this.state.artistId !== 0) {
+            this.searchForAlbums(this.state.artistId);
+        }
     }
 
     goToHome(){
@@ -67,6 +97,9 @@ class ArtistInfo extends React.Component {
                     </div>
                     <div className="card-columns">
                         {this.renderAlbumCards()}
+                        <Waypoint
+                            onPositionChange={this.enteredWaypoint}
+                        />
                     </div>
                 </div>
                 <PageFooter/>

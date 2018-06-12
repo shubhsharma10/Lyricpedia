@@ -1,1 +1,1 @@
-export const track = [{track: {commontrack_id: 5,track_name: 'shubham',artist_name: 'asf',album_name:'test'}}];
+export const API_KEY = '629bf02832ff5f4513c42b46453c2340';
