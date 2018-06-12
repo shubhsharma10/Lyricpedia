@@ -28,7 +28,7 @@ class TrackSearch {
             .map(k => esc(k) + '=' + esc(params[k]))
             .join('&');
         console.log(query);
-        let url = 'http://api.musixmatch.com/ws/1.1/track.search?'+query;
+        let url = 'https://api.musixmatch.com/ws/1.1/track.search?'+query;
         console.log(url);
         return fetch(url)
                 .then( (response) => response.text())
