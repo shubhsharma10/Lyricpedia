@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import TrackSearch from '../services/TrackSearch';
 import TrackRow from '../components/TrackRow';
+import PageFooter from '../components/PageFooter'
 import Waypoint from 'react-waypoint';
 import {Redirect} from 'react-router-dom'
 
@@ -140,11 +141,7 @@ export default class SearchResult extends Component {
                         </table>
                     </div>
                 </div>
-                <nav className="navbar navbar-light bg-light fixed-bottom">
-                    <div className="navbar-text pull-left">
-                        <h6>Developed by Shubham Sharma © 2018</h6>
-                    </div>
-                </nav>
+                <PageFooter/>
             </div>
         )
     }

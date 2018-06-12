@@ -1,6 +1,7 @@
 import React from 'react'
 import TrackSearch from '../services/TrackSearch'
 import {Redirect} from 'react-router-dom'
+import PageFooter from '../components/PageFooter'
 
 
 class SearchPage extends React.Component {
@@ -62,11 +63,7 @@ class SearchPage extends React.Component {
                         </div>
                     </div>
                 </div>
-                <nav className="navbar navbar-light bg-light fixed-bottom">
-                    <div className="navbar-text pull-left">
-                        <h8>Developed by Shubham Sharma © 2018</h8>
-                    </div>
-                </nav>
+                <PageFooter/>
             </div>
         )
     }

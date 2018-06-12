@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 class TrackRow extends React.Component {
 
@@ -9,7 +10,9 @@ class TrackRow extends React.Component {
                     {this.props.track.track_name}
                 </td>
                 <td>
-                    {this.props.track.artist_name}
+                    <Link to={`/artist/${this.props.track.artist_id}`}>
+                        {this.props.track.artist_name}
+                    </Link>
                 </td>
                 <td>
                     {this.props.track.album_name}
