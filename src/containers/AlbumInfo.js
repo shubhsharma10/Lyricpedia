@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import TrackSearch from '../services/TrackSearch'
+import MusixMatchAPIService from '../services/MusixMatchAPIService'
 import PageHeader from '../components/PageHeader'
 import PageFooter from '../components/PageFooter'
 import {Redirect} from 'react-router-dom'
@@ -23,7 +23,7 @@ class AlbumInfo extends React.Component {
 
         this.goToHome = this.goToHome.bind(this);
 
-        this.musicService = TrackSearch.instance;
+        this.musicService = MusixMatchAPIService.instance;
     }
 
     componentDidMount(){

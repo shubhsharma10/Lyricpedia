@@ -1,5 +1,4 @@
 import React from 'react'
-import TrackSearch from '../services/TrackSearch'
 import {Redirect} from 'react-router-dom'
 import PageFooter from '../components/PageFooter'
 
@@ -13,9 +12,6 @@ class SearchPage extends React.Component {
         };
         this.inputChanged = this.inputChanged.bind(this);
         this.handleKeyUp = this.handleKeyUp.bind(this);
-
-        
-        this.trackSearchService = TrackSearch.instance;
     }
 
     handleKeyUp(event){

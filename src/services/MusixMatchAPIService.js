@@ -2,7 +2,7 @@ import * as constants from '../constants/index'
 
 let _singleton = Symbol();
 
-class TrackSearch {
+class MusixMatchAPIService {
 
     constructor(singletonToken) {
         if (_singleton !== singletonToken)
@@ -11,7 +11,7 @@ class TrackSearch {
 
     static get instance() {
         if(!this[_singleton])
-            this[_singleton] = new TrackSearch(_singleton);
+            this[_singleton] = new MusixMatchAPIService(_singleton);
         return this[_singleton]
     }
 
@@ -135,4 +135,4 @@ class TrackSearch {
     }
 }
 
-export default TrackSearch;
+export default MusixMatchAPIService;

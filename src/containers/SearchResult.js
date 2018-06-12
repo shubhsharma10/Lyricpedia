@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import TrackSearch from '../services/TrackSearch';
+import MusixMatchAPIService from '../services/MusixMatchAPIService';
 import TrackRow from '../components/TrackRow';
 import PageFooter from '../components/PageFooter'
 import Waypoint from 'react-waypoint';
@@ -23,7 +23,7 @@ export default class SearchResult extends Component {
         this.goToHome = this.goToHome.bind(this);
         this.renderMatchingTracks = this.renderMatchingTracks.bind(this);
 
-        this.trackSearchService = TrackSearch.instance;
+        this.musicService = MusixMatchAPIService.instance;
     }
 
     componentDidMount(){
@@ -62,7 +62,7 @@ export default class SearchResult extends Component {
     searchForTracks(word) {
         this.setState({isLoading:true});
         let currentPageCount = this.state.pageCount;
-        this.trackSearchService
+        this.musicService
             .searchTracks(word,currentPageCount)
             .then((result)=>{
                 let currentItems = this.state.trackList;

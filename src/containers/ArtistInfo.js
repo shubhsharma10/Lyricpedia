@@ -1,5 +1,5 @@
 import React from 'react';
-import TrackSearch from '../services/TrackSearch'
+import MusixMatchAPIService from '../services/MusixMatchAPIService'
 import PageHeader from '../components/PageHeader'
 import PageFooter from '../components/PageFooter'
 import AlbumCard from "../components/AlbumCard";
@@ -23,7 +23,7 @@ class ArtistInfo extends React.Component {
         this.enteredWaypoint = this.enteredWaypoint.bind(this);
         this.renderAlbumCards = this.renderAlbumCards.bind(this);
 
-        this.musicService = TrackSearch.instance;
+        this.musicService = MusixMatchAPIService.instance;
     }
 
     componentDidMount(){
@@ -48,7 +48,10 @@ class ArtistInfo extends React.Component {
                 let newItems = result.message.body.album_list;
                 for(let i=0;i<newItems.length;i++)
                 {
-                    currentItems.push(newItems[i]);
+                    let album = newItems[i].album;
+                    let index = currentItems.findIndex(i => i.album.album_name === album.album_name);
+                    if(index === -1)
+                        currentItems.push(newItems[i]);
                 }
                 this.setState({
                     albums:currentItems},function () {
