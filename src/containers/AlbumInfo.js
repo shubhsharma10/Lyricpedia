@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 import TrackSearch from '../services/TrackSearch'
 import PageHeader from '../components/PageHeader'
 import PageFooter from '../components/PageFooter'
@@ -74,7 +75,11 @@ class AlbumInfo extends React.Component {
                                 <img className="card-img-top" src={this.state.albumCoverArt} alt="album"/>
                                     <div className="card-body text-center">
                                         <h3>{this.state.albumName}</h3>
-                                        <h6>by {this.state.artistName}</h6>
+                                        <h6>by&nbsp;
+                                            <Link to={`/artist/${this.state.artistId}`}>
+                                                {this.state.artistName}
+                                            </Link>
+                                        </h6>
                                         <h6>{this.state.trackReleaseYear}&nbsp;&middot;&nbsp;{this.state.trackCount} Songs</h6>
                                     </div>
                             </div>
