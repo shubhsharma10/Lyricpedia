@@ -13,6 +13,53 @@ class TrackSearch {
         return this[_singleton]
     }
 
+    getAlbum(albumId) {
+        let params = {
+            format: 'jsonp',
+            callback: 't',
+            album_id: albumId,
+            apikey: '629bf02832ff5f4513c42b46453c2340'
+        };
+
+        let esc = encodeURIComponent;
+        let query = Object.keys(params)
+            .map(k => esc(k) + '=' + esc(params[k]))
+            .join('&');
+        let url = 'https://api.musixmatch.com/ws/1.1/album.get?'+query;
+        return fetch(url)
+            .then( (response) => response.text())
+            .then((responseText) => {
+                let match = responseText.slice(2);
+                match = match.slice(0,-2);
+                return JSON.parse(match);
+            })
+    }
+
+    getAlbumTracks(albumId) {
+        let params = {
+            format: 'jsonp',
+            callback: 't',
+            album_id: albumId,
+            page: 1,
+            page_size: 50,
+            apikey: '629bf02832ff5f4513c42b46453c2340'
+        };
+
+        let esc = encodeURIComponent;
+        let query = Object.keys(params)
+            .map(k => esc(k) + '=' + esc(params[k]))
+            .join('&');
+        let url = 'https://api.musixmatch.com/ws/1.1/album.tracks.get?'+query;
+        return fetch(url)
+            .then( (response) => response.text())
+            .then((responseText) => {
+                let match = responseText.slice(2);
+                match = match.slice(0,-2);
+                return JSON.parse(match);
+            })
+    }
+
+
     getArtist(artistId) {
         let params = {
             format: 'jsonp',
