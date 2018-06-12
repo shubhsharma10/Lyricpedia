@@ -25,6 +25,7 @@ export default class SearchResult extends Component {
         if(this.props.location.inputWords !== undefined) {
             this.setState({
                 inputWords: this.props.location.inputWords,
+                trackList: [],
                 pageCount: 1
             },function () {
                 if(this.state.inputWords !== '')
@@ -38,6 +39,7 @@ export default class SearchResult extends Component {
     inputChanged(event) {
         this.setState({
             inputWords:event.target.value,
+            trackList: [],
             pageCount: 1
         });
     }
