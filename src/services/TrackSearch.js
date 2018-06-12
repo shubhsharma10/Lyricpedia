@@ -113,7 +113,7 @@ class TrackSearch {
             format: 'jsonp',
             callback: 't',
             q_lyrics: word,
-            page_size:10,
+            page_size:20,
             page:pageNumber,
             apikey: '629bf02832ff5f4513c42b46453c2340'
         };

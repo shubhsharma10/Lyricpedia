@@ -19,7 +19,7 @@ export default class SearchResult extends Component {
         this.searchForTracks = this.searchForTracks.bind(this);
         this.inputChanged = this.inputChanged.bind(this);
         this.handleKeyUp = this.handleKeyUp.bind(this);
-        this.enterWaypoint = this.enterWaypoint.bind(this);
+        this.enteredWaypoint = this.enteredWaypoint.bind(this);
         this.goToHome = this.goToHome.bind(this);
         this.renderMatchingTracks = this.renderMatchingTracks.bind(this);
 
@@ -81,19 +81,18 @@ export default class SearchResult extends Component {
             });
     }
 
-    renderMatchingTracks() {
-        return ( this.state.trackList.map((track) => {
-            return <TrackRow track={track.track} key={track.track.commontrack_id} />
-        }));
-    }
-
-    enterWaypoint({ previousPosition }){
+    enteredWaypoint() {
         if(!this.state.isLoading
-            && this.state.pageCount < 3
-            && this.state.inputWords !== ''
-            && previousPosition === Waypoint.below) {
+            && this.state.inputWords !== '') {
+            console.log('came here');
             this.searchForTracks(this.state.inputWords);
         }
+    }
+
+    renderMatchingTracks() {
+        return ( this.state.trackList.map((track) => {
+            return <TrackRow track={track.track} key={track.track.commontrack_id} isAlbumSource={false} />
+        }));
     }
 
     render() {
@@ -128,15 +127,17 @@ export default class SearchResult extends Component {
                     <div className="row justify-content-center">
                         <table className="custom-table">
                             <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Artist</th>
-                                <th>Album</th>
-                            </tr>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Artist</th>
+                                    <th>Album</th>
+                                </tr>
                             </thead>
                             <tbody>
-                            {this.renderMatchingTracks()}
-                            <Waypoint onEnter={this.enterWaypoint}/>
+                                {this.renderMatchingTracks()}
+                                <Waypoint
+                                    onPositionChange={this.enteredWaypoint}
+                                />
                             </tbody>
                         </table>
                     </div>

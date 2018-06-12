@@ -116,10 +116,6 @@ th, td {
     border-bottom: 2px solid #ddd;
 }
 
-tbody {
-    min-height: 80%;
-}
-
 tr {
     background-color: white;
 }
