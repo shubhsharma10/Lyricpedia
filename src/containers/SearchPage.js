@@ -49,18 +49,16 @@ class SearchPage extends React.Component {
                         <button className="btn btn-outline-primary mx-1">Sign up</button>
                     </div>
                 </nav>
-                <div className="container vertical-center">
+                <div className="container vertical-center py-5">
                     <div className="col">
                         <div className="row">
                             <h1 className="LandingText float-left">Search songs by lyrics</h1>
                         </div>
-                        <div className="row">
-                            <div id="search" className="Search1">
+                        <div className="row Search1">
                                 <input onKeyUp={this.handleKeyUp}
                                        onChange={this.inputChanged}
                                        placeholder="Enter lyrics here.."
                                        value={this.state.inputWords}/>
-                            </div>
                         </div>
                     </div>
                 </div>
