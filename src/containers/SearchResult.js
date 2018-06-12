@@ -123,7 +123,7 @@ export default class SearchResult extends Component {
                             </div>
                         </div>
                 </nav>
-                <div className="container pt-5">
+                <div className="container py-5">
                     <div className="row justify-content-center">
                         <table className="custom-table">
                             <thead>
