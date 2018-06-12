@@ -36,20 +36,39 @@ class SearchPage extends React.Component {
             }}/>
         }
         return(
-            <div className="container vertical-center">
-                <div className="col">
-                    <div className="row">
-                        <h1 className="LandingText float-left">Search songs by lyrics</h1>
+            <div className="container-custom">
+                <nav className="navbar navbar-expand-md navbar-light bg-light fixed-top container-fluid">
+                    <div className="navbar-header">
+                        <a className="navbar-brand">Lyricpedia</a>
                     </div>
-                    <div className="row">
-                        <div id="search" className="Search1">
-                            <input onKeyUp={this.handleKeyUp}
-                                   onChange={this.inputChanged}
-                                   placeholder="Search for songs..."
-                                   value={this.state.inputWords}/>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"/>
+                    </button>
+                    <div className="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+                        <button className="btn btn-outline-primary mx-1">Login</button>
+                        <button className="btn btn-outline-primary mx-1">Sign up</button>
+                    </div>
+                </nav>
+                <div className="container vertical-center">
+                    <div className="col">
+                        <div className="row">
+                            <h1 className="LandingText float-left">Search songs by lyrics</h1>
+                        </div>
+                        <div className="row">
+                            <div id="search" className="Search1">
+                                <input onKeyUp={this.handleKeyUp}
+                                       onChange={this.inputChanged}
+                                       placeholder="Enter lyrics here.."
+                                       value={this.state.inputWords}/>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <nav className="navbar navbar-light bg-light fixed-bottom">
+                    <div className="navbar-text pull-left">
+                        <h8>Developed by Shubham Sharma © 2018</h8>
+                    </div>
+                </nav>
             </div>
         )
     }
