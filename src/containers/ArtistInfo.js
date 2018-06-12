@@ -1,9 +1,9 @@
 import React from 'react';
 import TrackSearch from '../services/TrackSearch'
-import PageHeader from './PageHeader'
-import PageFooter from './PageFooter'
+import PageHeader from '../components/PageHeader'
+import PageFooter from '../components/PageFooter'
 import {Redirect} from 'react-router-dom'
-import AlbumCard from "./AlbumCard";
+import AlbumCard from "../components/AlbumCard";
 
 class ArtistInfo extends React.Component {
 
