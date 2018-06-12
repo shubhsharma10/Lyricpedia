@@ -10,16 +10,17 @@ class SearchPage extends React.Component {
             inputWords: '',
             toResultPage: false
         };
-        this.searchForTrack = this.searchForTrack.bind(this);
         this.inputChanged = this.inputChanged.bind(this);
+        this.handleKeyUp = this.handleKeyUp.bind(this);
 
         
         this.trackSearchService = TrackSearch.instance;
     }
 
-
-    searchForTrack(){
-        this.setState({toResultPage:true});
+    handleKeyUp(event){
+        if (event.key === 'Enter' && this.state.inputWords !== '') {
+            this.setState({toResultPage:true});
+        }
     }
 
     inputChanged(event) {
@@ -35,19 +36,18 @@ class SearchPage extends React.Component {
             }}/>
         }
         return(
-            <div className="container-fluid">
-                <div className="row vertical-center">
-                    <div className="input-group mb-3 col">
-                        <input type="text"
-                               value={this.state.inputWords}
-                               onChange={this.inputChanged}
-                               className="form-control"
-                               placeholder="Enter lyrics here"
-                               aria-label="Enter lyrics here"
-                               aria-describedby="basic-addon2"/>
-                            <div className="input-group-append">
-                                <button className="btn btn-primary" onClick={this.searchForTrack}>Search</button>
-                            </div>
+            <div className="container vertical-center">
+                <div className="col">
+                    <div className="row">
+                        <h1 className="LandingText float-left">Search songs by lyrics</h1>
+                    </div>
+                    <div className="row">
+                        <div id="search" className="Search1">
+                            <input onKeyUp={this.handleKeyUp}
+                                   onChange={this.inputChanged}
+                                   placeholder="Search for songs..."
+                                   value={this.state.inputWords}/>
+                        </div>
                     </div>
                 </div>
             </div>

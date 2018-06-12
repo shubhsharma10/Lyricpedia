@@ -1,8 +1,3 @@
-import axios from 'axios'
-
-const API_MUSIXMATCH = '629bf02832ff5f4513c42b46453c2340';
-const ENDPOINT = 'http://api.musixmatch.com/ws/1.1';
-
 let _singleton = Symbol();
 
 class TrackSearch {
@@ -18,12 +13,13 @@ class TrackSearch {
         return this[_singleton]
     }
 
-    searchTracks(word) {
+    searchTracks(word,pageNumber) {
         let params = {
             format: 'jsonp',
             callback: 't',
             q_lyrics: word,
             page_size:10,
+            page:pageNumber,
             apikey: '629bf02832ff5f4513c42b46453c2340'
         };
 

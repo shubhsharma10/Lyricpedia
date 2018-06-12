@@ -7,7 +7,7 @@ export default class HomePage extends Component {
     render() {
         return(
             <Router>
-                <div className="bg">
+                <div>
                     <Route
                         exact path="/" component={SearchPage}>
                     </Route>
