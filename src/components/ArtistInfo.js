@@ -65,7 +65,7 @@ class ArtistInfo extends React.Component {
                     <div className="row justify-content-center">
                         <h2>Albums</h2>
                     </div>
-                    <div className="row flex-row flex-wrap">
+                    <div className="card-columns">
                         {this.renderAlbumCards()}
                     </div>
                 </div>
