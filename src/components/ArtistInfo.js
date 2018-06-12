@@ -24,11 +24,13 @@ class ArtistInfo extends React.Component {
 
     componentDidMount(){
         this.setState({artistId:this.props.match.params.artistId});
+
         this.musicService
             .getArtist(this.props.match.params.artistId)
             .then((result)=> {
                 this.setState({artistName:result.message.body.artist.artist_name});
             });
+
         this.musicService
             .searchAlbums(this.props.match.params.artistId)
             .then((result)=>{
@@ -56,11 +58,14 @@ class ArtistInfo extends React.Component {
                 <PageHeader goToHome={this.goToHome}/>
                 <div className="container-fluid py-5">
                     <div className="row justify-content-center">
-                            <h1 className="ArtistText">{this.state.artistName}</h1>
+                            <h1 className="LandingText">{this.state.artistName}</h1>
                     </div>
                 </div>
                 <div className="container-fluid py-5 px-5">
-                    <div className="card-columns">
+                    <div className="row justify-content-center">
+                        <h2>Albums</h2>
+                    </div>
+                    <div className="row flex-row flex-wrap">
                         {this.renderAlbumCards()}
                     </div>
                 </div>
