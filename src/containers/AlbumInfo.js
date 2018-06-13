@@ -71,7 +71,7 @@ class AlbumInfo extends React.Component {
                 <div className="container-fluid py-5">
                     <div className="row py-5 px-5">
                         <div className="col-xs-6 col-md-4">
-                            <div className="card" style={{width: '15rem'}}>
+                            <div className="card" style={{width: '14rem'}}>
                                 <img className="card-img-top" src={this.state.albumCoverArt} alt="album"/>
                                     <div className="card-body text-center">
                                         <h3>{this.state.albumName}</h3>
@@ -84,7 +84,7 @@ class AlbumInfo extends React.Component {
                                     </div>
                             </div>
                         </div>
-                        <div className="col-xs-6 col-md-8 my-5 ">
+                        <div className="col-xs-6 col-md-8">
                             <div className="list-group list-group-flush">
                                 {this.renderAlbumTracks()}
                             </div>

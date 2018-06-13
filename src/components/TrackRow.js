@@ -23,7 +23,21 @@ class TrackRow extends React.Component {
                             <i className="fa fa-music fa-1x mx-1 py-1"/>
                             <h5 className="mb-1 mx-2">{this.props.track.track_name}</h5>
                         </div>
-                        <small>{this.getTrackLength()}</small>
+                        <div className="row mx-1">
+                            <div className="dropdown mx-1">
+                                <a id="dropdownMenu2"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false">
+                                    <i className="fa fa-ellipsis-h fa-2x"/>
+                                </a>
+                                <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+                                    <button className="dropdown-item" type="button">Comment</button>
+                                    <button className="dropdown-item" type="button">Add to playlist</button>
+                                </div>
+                            </div>
+                            <small className="mx-1 py-1">{this.getTrackLength()}</small>
+                        </div>
                     </div>
                 </a>
             );
