@@ -9,4 +9,4 @@
 - User can navigate to Artist page from Album and Album page to Artist page.
 
 ## Hosted on
-- https://lyricpedia.herokuapp.com
+- https://lyricpedia-poc.herokuapp.com/
